@@ -1,1 +1,4 @@
-# prisma-crud-api
+# Technologies Used
+## ORM : PRISMA
+## SQL DIALIECCT: POSTGRESQL
+## BACKEND FRAMEWORK: NODE JS, EXPRESS

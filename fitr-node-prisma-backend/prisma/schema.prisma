@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//SETTING UP TABLES
+model User {
+  @@map("users") // @Table(name = "users") for Hibernate
+  user_id     Int       @default(autoincrement()) @id
+  first_name  String    @db.VarChar(50)
+  last_name   String    @db.VarChar(50)
+  username    String    @db.VarChar(255) @unique
+  password    String    @db.VarChar(50)
+  email       String    @db.VarChar(50) @unique
+  role         Role     @default(USER)
+  workouts Workout[]
+//ADDING MORE FIELDS
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum WorkoutType {
+  None
+  Cycling
+  Dance
+  Running
+  Strength
+}
+
+model Workout {
+  @@map("workouts") // @Table(name = "users") for Hibernate
+  workout_id    Int       @default(autoincrement()) @unique
+  workout_title   String    @db.VarChar(50) @unique
+  workout_description   String    @db.VarChar(255)
+  user User @relation(fields: [user_id], references: [user_id])
+  workout_type  WorkoutType @default(None)
+  exercises Exercise[]
+  createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+  user_id Int @default(1)
+//ADDING MORE FIELDS
+}
+
+model Exercise {
+  @@map("exercises") // @Table(name = "users") for Hibernate
+  exercise_id     Int       @default(autoincrement()) @id
+  exercise_name    String    @db.VarChar(255) 
+  category Category @relation(fields: [category_id], references: [category_id])
+  category_id Int
+  workout Workout @relation(fields: [workout_id], references: [workout_id])
+  workout_id Int @default(-1)
+//ADDING MORE FIELDS
+}
+
+model Category {
+  @@map("categories")
+  category_id  Int @unique
+  category_name String @db.VarChar(255)
+  exercises Exercise[]
+}
+
+
