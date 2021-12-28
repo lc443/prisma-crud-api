@@ -1,12 +1,19 @@
+## PROJECT
+Purpose of this project is to learn Prisma and perfom CRUD operations using prisma.
+
 # Technologies Used
 
-#### ORM
--   PRISMA CLI
--   PRISMA MIGRATION
--   PRISMA CLIENT
--   PRIMA STUDIO
+## BACKEND
+ -   NODE JS
+ -   EXPRESS JS
+### SQL Dialect: 
+ -   POSTGRESQL
+ -   FRAMEWORK:
+###    ORM
+ -   PRISMA CLI
+ -   PRISMA MIGRATION
+ -   PRISMA CLIENT
+ -   PRIMA STUDIO
 
-#### SQL Dialect: 
--   POSTGRESQL
-## BACKEND FRAMEWORK:
--   NODE JS, EXPRESS
+## FRONT END
+-   ANGULAR
