@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 app.use(bodyParser.json())
+app.use(cors());
 
 app.use('/api/exercises', require('./routes/exercises'));
 app.use('/api/categories', require('./routes/categories'));
