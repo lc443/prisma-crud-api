@@ -1,4 +1,3 @@
-import { ExercisesComponent } from "../components/exercises/exercises.component";
 import { Exercise } from "./exercises";
 import { User } from "./user";
 
